@@ -23,9 +23,9 @@ public class GistCommand {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment)
     {
-        dispatcher.register(CommandManager.literal("gist").requires(source -> source.hasPermissionLevel(2))
+        dispatcher.register(CommandManager.literal("gist").requires(CommandPermissions::canUseCommands)
                 .then(CommandManager.literal("getUrl").executes(GistCommand::getUrl)));
-        dispatcher.register(CommandManager.literal("gist").requires(source -> source.hasPermissionLevel(2))
+        dispatcher.register(CommandManager.literal("gist").requires(CommandPermissions::canUseCommands)
                 .then(CommandManager.literal("getIp").executes(GistCommand::getIp)));
     }
 

@@ -24,8 +24,9 @@ public class Engrok implements ModInitializer {
 	public static ConfigHolder<EngrokConfig> configHolder;
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Minecraft Server started with Engrok");
+		LOGGER.info("Initializing Engrok");
 		configHolder = AutoConfig.register(EngrokConfig.class, JanksonConfigSerializer::new);
+		registerCommands();
 	}
 
 	public static void registerCommands()

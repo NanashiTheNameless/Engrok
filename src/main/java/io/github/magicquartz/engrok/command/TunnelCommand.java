@@ -23,11 +23,11 @@ public class TunnelCommand {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment)
     {
-        dispatcher.register(CommandManager.literal("tunnel").requires(source -> source.hasPermissionLevel(2))
+        dispatcher.register(CommandManager.literal("tunnel").requires(CommandPermissions::canUseCommands)
                 .then(CommandManager.literal("open").executes(TunnelCommand::open)));
-        dispatcher.register(CommandManager.literal("tunnel").requires(source -> source.hasPermissionLevel(2))
+        dispatcher.register(CommandManager.literal("tunnel").requires(CommandPermissions::canUseCommands)
                 .then(CommandManager.literal("close").executes(TunnelCommand::close)));
-        dispatcher.register(CommandManager.literal("tunnel").requires(source -> source.hasPermissionLevel(2))
+        dispatcher.register(CommandManager.literal("tunnel").requires(CommandPermissions::canUseCommands)
                 .then(CommandManager.literal("status").executes(TunnelCommand::status)));
     }
 

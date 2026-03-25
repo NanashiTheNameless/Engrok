@@ -58,6 +58,11 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 java {
+	toolchain {
+		languageVersion = org.gradle.jvm.toolchain.JavaLanguageVersion.of(21)
+		vendor = org.gradle.jvm.toolchain.JvmVendorSpec.AZUL
+	}
+
 	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
 	// if it is present.
 	// If you remove this line, sources will not be generated.

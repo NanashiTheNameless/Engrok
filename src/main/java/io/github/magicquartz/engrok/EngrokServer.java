@@ -12,7 +12,5 @@ public class EngrokServer implements DedicatedServerModInitializer {
     @Override
     public void onInitializeServer() {
         LOGGER.info("Dedicated server detected!");
-
-        Engrok.registerCommands();
     }
 }
