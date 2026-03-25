@@ -101,7 +101,6 @@ jobs:
             const releaseBody = [
               'Latest rolling nightly build for Engrok.',
               '',
-              `Asset naming pattern: \`${assetPattern}\``,
               `Source commit: \`${{ steps.vars.outputs.git_sha7 }}\``,
             ].join('\n');
 
