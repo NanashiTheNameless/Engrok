@@ -16,9 +16,6 @@
 	"icon": "assets/engrok/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"preLaunch": [
-			"io.github.nanashithenameless.engrok.security.Log4jMitigationPreLaunch"
-		],
 		"main": [
 			"io.github.nanashithenameless.engrok.Engrok"
 		],

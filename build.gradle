@@ -8,6 +8,7 @@ plugins {
 
 version = project.mod_version
 group = project.maven_group
+def safeLog4jVersion = "2.24.3"
 
 base {
 	archivesName = project.archives_base_name
@@ -42,6 +43,18 @@ dependencies {
 
 	modApi("me.shedaniel.cloth:cloth-config-fabric:17.0.144") {
 		exclude(group: "net.fabricmc.fabric-api")
+	}
+
+	constraints {
+		implementation("org.apache.logging.log4j:log4j-api:${safeLog4jVersion}") {
+			because "Log4Shell-style JNDI issues were fixed in newer Log4j releases"
+		}
+		implementation("org.apache.logging.log4j:log4j-core:${safeLog4jVersion}") {
+			because "Log4Shell-style JNDI issues were fixed in newer Log4j releases"
+		}
+		implementation("org.apache.logging.log4j:log4j-slf4j2-impl:${safeLog4jVersion}") {
+			because "Log4Shell-style JNDI issues were fixed in newer Log4j releases"
+		}
 	}
 }
 
