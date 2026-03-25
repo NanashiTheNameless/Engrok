@@ -1,4 +1,4 @@
-package io.github.magicquartz.engrok.command;
+package io.github.nanashithenameless.engrok.command;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.server.MinecraftServer;

@@ -1,6 +1,6 @@
-package io.github.magicquartz.engrok.mixin;
+package io.github.nanashithenameless.engrok.mixin;
 
-import io.github.magicquartz.engrok.Engrok;
+import io.github.nanashithenameless.engrok.Engrok;
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

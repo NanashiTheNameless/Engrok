@@ -1,7 +1,7 @@
-package io.github.magicquartz.engrok.integrations;
+package io.github.nanashithenameless.engrok.integrations;
 
-import io.github.magicquartz.engrok.Engrok;
-import io.github.magicquartz.engrok.config.EngrokConfig;
+import io.github.nanashithenameless.engrok.Engrok;
+import io.github.nanashithenameless.engrok.config.EngrokConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

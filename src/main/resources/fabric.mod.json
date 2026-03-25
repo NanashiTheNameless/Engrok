@@ -1,25 +1,26 @@
 {
 	"schemaVersion": 1,
-	"id": "engrok",
+	"id": "engrok-nanashi-fork",
 	"version": "${version}",
-	"name": "Engrok",
+	"name": "Engrok-Nanashi-FORK",
 	"description": "Automatically opens an Ngrok server on a Dedicated Minecraft Fabric server",
 	"authors": [
+		"NanashiTheNameless",
 		"MagicQuartz"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/MagicQuartz/Engrok"
+		"sources": "https://github.com/NanashiTheNameless/Engrok"
 	},
 	"license": "MIT",
 	"icon": "assets/engrok/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"io.github.magicquartz.engrok.Engrok"
+			"io.github.nanashithenameless.engrok.Engrok"
 		],
 		"server": [
-			"io.github.magicquartz.engrok.EngrokServer"
+			"io.github.nanashithenameless.engrok.EngrokServer"
 		]
 	},
 	"mixins": [
@@ -33,6 +34,5 @@
 		"cloth-config": ">=17.0.144"
 	},
 	"suggests": {
-		"another-mod": "*"
 	}
 }

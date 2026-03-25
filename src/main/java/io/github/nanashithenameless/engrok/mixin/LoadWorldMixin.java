@@ -1,9 +1,9 @@
-package io.github.magicquartz.engrok.mixin;
+package io.github.nanashithenameless.engrok.mixin;
 
-import io.github.magicquartz.engrok.Engrok;
-import io.github.magicquartz.engrok.initialization.LoadWorldInvoker;
-import io.github.magicquartz.engrok.config.EngrokConfig;
-import io.github.magicquartz.engrok.integrations.GitHubGists;
+import io.github.nanashithenameless.engrok.Engrok;
+import io.github.nanashithenameless.engrok.initialization.LoadWorldInvoker;
+import io.github.nanashithenameless.engrok.config.EngrokConfig;
+import io.github.nanashithenameless.engrok.integrations.GitHubGists;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;

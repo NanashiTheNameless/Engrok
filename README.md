@@ -1,11 +1,5 @@
-![Engrok Thumbnail](https://cdn.modrinth.com/data/cached_images/05c01e0a7a1de72593e5a47ee8129ae467fc9831.png)
+# Engrok
 
-<center>
-  <h2>Engrok</h2>
-   <a href="https://modrinth.com/mod/cloth-config"><img src="https://wsrv.nl/?url=https://cdn.modrinth.com/data/cached_images/c45c8cf9b2c779559cd5befea3e10be30d21ff0a.png&amp;n=-1" alt="Requires Cloth Config" width="200"></a>
-  <a href="https://modrinth.com/mod/fabric-api"><img src="https://wsrv.nl/?url=https://cdn.modrinth.com/data/cached_images/8bd6d7ff822dc33ffb55af6cc0c7062cec53e9e3.png&amp;n=-1" alt="Requires Fabric API" width="200"></a>
-</center>
-<br>
 Engrok is a server-side mod for dedicated servers which opens an Ngrok tunnel automatically once the server starts. There's an integration for GitHub Gists which uploads the Ngrok tunnel IP to a GitHub Gist (an existing one or a new one, depending on the mod's config - if there isn't an existing one, a new one will be created and saved to the config file automatically) so users can either retreive the IP from the Gist directly, or, using the mod Ever Changing on their clients to automatically retrieve it for them.
 
 # **How to use**

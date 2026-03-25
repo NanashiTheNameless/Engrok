@@ -1,4 +1,4 @@
-package io.github.magicquartz.engrok.config;
+package io.github.nanashithenameless.engrok.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;

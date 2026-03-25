@@ -1,10 +1,10 @@
-package io.github.magicquartz.engrok.command;
+package io.github.nanashithenameless.engrok.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import io.github.magicquartz.engrok.Engrok;
-import io.github.magicquartz.engrok.integrations.GitHubGists;
+import io.github.nanashithenameless.engrok.Engrok;
+import io.github.nanashithenameless.engrok.integrations.GitHubGists;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;

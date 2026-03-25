@@ -1,9 +1,9 @@
-package io.github.magicquartz.engrok;
+package io.github.nanashithenameless.engrok;
 
-import io.github.magicquartz.engrok.command.EngrokCommand;
-import io.github.magicquartz.engrok.command.GistCommand;
-import io.github.magicquartz.engrok.command.TunnelCommand;
-import io.github.magicquartz.engrok.config.EngrokConfig;
+import io.github.nanashithenameless.engrok.command.EngrokCommand;
+import io.github.nanashithenameless.engrok.command.GistCommand;
+import io.github.nanashithenameless.engrok.command.TunnelCommand;
+import io.github.nanashithenameless.engrok.config.EngrokConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;

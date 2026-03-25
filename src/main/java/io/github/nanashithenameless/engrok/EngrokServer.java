@@ -1,10 +1,10 @@
-package io.github.magicquartz.engrok;
+package io.github.nanashithenameless.engrok;
 
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
-import static io.github.magicquartz.engrok.Engrok.LOGGER;
+import static io.github.nanashithenameless.engrok.Engrok.LOGGER;
 
 @Environment(EnvType.SERVER)
 public class EngrokServer implements DedicatedServerModInitializer {
