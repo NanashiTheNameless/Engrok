@@ -14,9 +14,13 @@ import com.github.alexdlaird.ngrok.NgrokClient;
 import com.github.alexdlaird.ngrok.conf.JavaNgrokConfig;
 import com.github.alexdlaird.ngrok.protocol.CreateTunnel;
 import com.github.alexdlaird.ngrok.protocol.Proto;
-import com.github.alexdlaird.ngrok.protocol.Region;
 import com.github.alexdlaird.ngrok.protocol.Tunnel;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 @Mixin(MinecraftServer.class)
 public class LoadWorldMixin implements LoadWorldInvoker {
@@ -40,20 +44,11 @@ public class LoadWorldMixin implements LoadWorldInvoker {
 	{
 		if(!Engrok.tunnelOpen)
 		{
-			switch (region) {
-				case EU -> ngrokInit(localPort, Region.EU);
-				case AP -> ngrokInit(localPort, Region.AP);
-				case AU -> ngrokInit(localPort, Region.AU);
-				case SA -> ngrokInit(localPort, Region.SA);
-				case JP -> ngrokInit(localPort, Region.JP);
-				case IN -> ngrokInit(localPort, Region.IN);
-				case US -> ngrokInit(localPort, Region.US);
-				default -> ngrokInit(localPort, null);
-			}
+			ngrokInit(localPort, region.getNgrokRegionCode());
 		}
 	}
 
-	private void ngrokInit(int port, Region region) {
+	private void ngrokInit(int port, String regionCode) {
 		//Defines a new threaded function to open the Ngrok tunnel, so that the "Open to LAN" button does not hitch - this thread runs in a separate process from the main game loop
 		Engrok.canCommand = false;
 		Thread thread = new Thread(() ->
@@ -65,23 +60,16 @@ public class LoadWorldMixin implements LoadWorldInvoker {
 				try {
 					Engrok.LOGGER.info("Starting Ngrok Service...");
 
-					// Java-ngrok wrapper code, to initiate the tunnel, with the auth token, region
-					final JavaNgrokConfig javaNgrokConfig;
+					if(regionCode == null)
+						Engrok.LOGGER.info("Using ngrok automatic point-of-presence selection.");
+					else
+						Engrok.LOGGER.info("Pinning ngrok to region code " + regionCode + ".");
 
-					if(region != null)
-					{
-						javaNgrokConfig = new JavaNgrokConfig.Builder()
-								.withAuthToken(config.ngrokAuthToken)
-								.withRegion(region)
-								.withoutMonitoring()
-								.build();
-					}
-					else {
-						javaNgrokConfig = new JavaNgrokConfig.Builder()
-								.withAuthToken(config.ngrokAuthToken)
-								.withoutMonitoring()
-								.build();
-					}
+					final JavaNgrokConfig javaNgrokConfig = new JavaNgrokConfig.Builder()
+							.withAuthToken(config.ngrokAuthToken)
+							.withConfigPath(createRuntimeNgrokConfig(regionCode))
+							.withoutMonitoring()
+							.build();
 
 					Engrok.ngrokClient = new NgrokClient.Builder()
 							.withJavaNgrokConfig(javaNgrokConfig)
@@ -116,5 +104,19 @@ public class LoadWorldMixin implements LoadWorldInvoker {
 
 		// This starts the thread defined above
 		thread.start();
+	}
+
+	private Path createRuntimeNgrokConfig(String regionCode) throws IOException {
+		// java-ngrok's default config for ngrok v3 still seeds "region: us".
+		// Writing our own config keeps AUTO truly automatic and lets us pass newer raw PoP codes.
+		Path runtimeConfigPath = Files.createTempFile("engrok-ngrok-", ".yml");
+		runtimeConfigPath.toFile().deleteOnExit();
+
+		StringBuilder configBuilder = new StringBuilder("version: 2\n");
+		if(regionCode != null)
+			configBuilder.append("region: ").append(regionCode).append('\n');
+
+		Files.writeString(runtimeConfigPath, configBuilder.toString(), StandardCharsets.UTF_8);
+		return runtimeConfigPath;
 	}
 }

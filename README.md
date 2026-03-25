@@ -9,17 +9,17 @@ The config'll probably look like this at the beginning:
 ```
 {
 	"enabled": true,
-	"ngrokAuthToken": "",
+	"ngrokAuthToken": "Insert your Ngrok auth token here",
 	"regionSelect": "AUTO",
-	"gitHubAuthToken": "",
-	"gistId": ""
+	"gitHubAuthToken": "Insert your GitHub auth token here",
+	"gistId": "Insert your gist ID here"
 }
 ```
 
 # **Config File**
 - _Enabled_: Self explanatory. Controls the mod.
 - _Ngrok Auth Token_: If you want the mod to do automatically open an Ngrok tunnel, you'll have to provide it your Ngrok Authentication Token, which you can get from the [Ngrok Website Dashboard](https://dashboard.ngrok.com/get-started/your-authtoken). You need an Ngrok account in order to acquire an auth token.
-- _Region Select_: Ngrok is capable of automatically selecting the tunnel location with the least amount of latency relative to you, so you should probably leave it at its default value. Otherwise, you can choose from [this list](https://ngrok.com/docs/network-edge/#points-of-presence).
+- _Region Select_: Leave this at `AUTO` to let ngrok pick the lowest-latency point of presence for you. If you need to pin a specific point of presence, the currently supported values are `US`, `US_CAL_1`, `EU`, `AP`, `AU`, `SA`, `JP`, and `IN`. Ngrok's current points-of-presence docs live at [Points of Presence](https://ngrok.com/docs/universal-gateway/points-of-presence).
 - _GitHub Auth Token_: In case you want to automatically update the tunnel's address  for your friends, I have made a GitHub integration which either makes a new Gist and saves its ID in the next field, or edits the existing gist in the following field. To get a GitHub Authentication Token, you'll need to make sure you're logged into GitHub, then press your profile picture on the top right, head into `Settings » Developer Settings » Personal access tokens » Tokens (classic)` and press `Generate new token`, then `Generate new token (classic)`. Then set `Expiration` to `No expiration` (or shorter, if you'd like), and under the `Select scopes` list make sure `gist` is ticked/enabled, then press `Generate Token`. Make sure to copy the token, because you'll need to regenerate a new one if you don't, then copy it into the config file.
 - _Gist ID_: If you have already made a gist, you can change this ID to the gist's ID to have the mod edit it everytime the tunnel is opened (How to find a gist ID: Let's take this gist link for example [https://gist.github.com/MagicQuartz/3bef909cddbfbb117f0bcf101222a5dc](https://gist.github.com/MagicQuartz/3bef909cddbfbb117f0bcf101222a5dc). You can copy the part after the last slash to have your ID, in this case it's 3bef909cddbfbb117f0bcf101222a5dc).
 
