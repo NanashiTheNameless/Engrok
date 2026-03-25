@@ -27,8 +27,10 @@ jobs:
       - name: Gather variables
         id: vars
         run: |
+          date=$(date -u +'%Y.%m.%d')
           git_sha7=$(git rev-parse --short=7 HEAD)
           minecraft_version=$(grep '^minecraft_version=' gradle.properties | cut -d= -f2)
+          echo "date=$date" >> "$GITHUB_OUTPUT"
           echo "git_sha7=$git_sha7" >> "$GITHUB_OUTPUT"
           echo "minecraft_version=$minecraft_version" >> "$GITHUB_OUTPUT"
 
@@ -96,11 +98,13 @@ jobs:
             const tag = 'nightly';
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const releaseName = `Nightly (${new Date().toISOString().slice(0, 10)})`;
-            const assetPattern = `Engrok-nightly-${{ steps.vars.outputs.minecraft_version }}-$$.jar`;
+            const releaseName = `Nightly (${{ steps.vars.outputs.date }})`;
+            const jarAssetName = `Engrok-nightly-${{ steps.vars.outputs.minecraft_version }}-${{ steps.vars.outputs.date }}-${{ steps.vars.outputs.git_sha7 }}.jar`;
+            const jarUrl = `https://github.com/${owner}/${repo}/releases/download/${tag}/${jarAssetName}`;
             const releaseBody = [
               'Latest rolling nightly build for Engrok.',
               '',
+              `Download the latest nightly JAR: [${jarAssetName}](${jarUrl})`,
               `Source commit: \`${{ steps.vars.outputs.git_sha7 }}\``,
             ].join('\n');
 
