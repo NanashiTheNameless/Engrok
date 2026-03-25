@@ -2,6 +2,8 @@
 
 Engrok is a server-side mod for dedicated servers which opens an Ngrok tunnel automatically once the server starts. There's an integration for GitHub Gists which uploads the Ngrok tunnel IP to a GitHub Gist (an existing one or a new one, depending on the mod's config - if there isn't an existing one, a new one will be created and saved to the config file automatically) so users can either retreive the IP from the Gist directly, or, using the mod Ever Changing on their clients to automatically retrieve it for them.
 
+This fork also applies Log4j hardening flags during Fabric pre-launch so the common Log4Shell lookup/JNDI exploit path is disabled before normal mod initialization.
+
 # **How to use**
 For the mod to create a config file you can modify you need to run the server with the mod loaded first. Then make sure to stop the server, then head to the folder "config" and open the file "engrok.json5" with a text editor.
 The config'll probably look like this at the beginning:
