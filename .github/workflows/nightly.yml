@@ -128,7 +128,7 @@ jobs:
                 tag_name: tag,
                 name: releaseName,
                 draft: false,
-                prerelease: true,
+                prerelease: false,
                 body: releaseBody,
               });
             } else {
@@ -140,7 +140,7 @@ jobs:
                   tag_name: tag,
                   name: releaseName,
                   draft: false,
-                  prerelease: true,
+                  prerelease: false,
                   body: releaseBody,
                 })).data,
               };
@@ -157,5 +157,5 @@ jobs:
           asset_path: ${{ steps.locate_jar.outputs.jar_path }}
           asset_name: Engrok-nightly-${{ steps.vars.outputs.minecraft_version }}-$$.jar
           asset_content_type: application/java-archive
-          max_releases: 4
+          max_releases: 1
           ignore_hash: false
